@@ -1,18 +1,21 @@
-# Mongo
+MongoDB TODO Database Operations
+This document outlines the steps to create and manage a TODO database in MongoDB, including creating a database, inserting data, querying records, updating documents, and counting items in the collection.
+1. Creating the TODO Database
+To create a database named TODO in MongoDB, use the following command:
+use TODO
 
-```Here we will start by creating a database by name:"TODO"
-use TODO```
-![image](https://github.com/user-attachments/assets/1e592124-1fe5-4f1c-91c1-1efd9d066dfd)
+2. Inserting Data into the Collection
+To insert multiple documents into the task collection, use the insertMany command:
+db.task.insertMany([])
 
-then after we will insert the data one by one or all at a time .
-here i will use the command:
-db.task.insertmany([])
-![image](https://github.com/user-attachments/assets/a5033df8-f29b-4d54-bad1-8218c0cfe29c)
-then we will abke to see the records by command:
+3. Querying Records
+To retrieve tasks with a specific status (e.g., Status: true), use the find command with the pretty method for formatted output:
 db.task.find({ Status: true }).pretty()
-here i added IST to time .First i have just number after that i have added it by command.
-![image](https://github.com/user-attachments/assets/523c8933-f552-4660-a64c-e70d81350071)
-then by object i set the status true or false command:
+
+Adding IST to Timestamps
+Timestamps were initially stored as numbers and later updated to include Indian Standard Time (IST) using appropriate commands.
+4. Updating Document Status
+To update the Status field of a specific document in the task collection, use the updateOne command with the document's _id:
 const collectionName = "task"; 
 const coll = db.getCollection(collectionName);
 const idString = "6836d571ac76a7a5e03bab01";
@@ -21,8 +24,19 @@ coll.updateOne(
   { _id: id },
   { $set: { Status: true } }
 );
-here i update the collection  by created time and uodated time:
-![image](https://github.com/user-attachments/assets/c3282c68-751c-4243-a0cb-cc7e5ba02aaf)
-by these I counted the items in collections.
+
+5. Updating Timestamps
+The CreatedTime and UpdatedTime fields were updated for documents in the task collection using appropriate commands.
+6. Counting Documents in the Collection
+To count the total number of documents in the task collection, use the countDocuments command:
 db.task.countDocuments({});
-![image](https://github.com/user-attachments/assets/188c7663-4562-4860-bac6-6dc251053069)
+
+Summary
+The above commands demonstrate how to:
+
+Create and switch to the TODO database.
+Insert multiple task documents into the task collection.
+Query tasks based on their status.
+Update the status and timestamps of specific documents.
+Count the total number of documents in the collection.
+
