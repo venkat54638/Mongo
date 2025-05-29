@@ -1,7 +1,7 @@
 ```markdown
 # MongoDB TODO Database Operations
 
-This document outlines the steps to create and manage a TODO database in MongoDB, including creating a database, inserting data, querying records, and updating documents.
+The steps to create and manage a TODO database in MongoDB, including creating a database, inserting data, querying records, and updating documents.
 
 ## 1. Creating the TODO Database
 
@@ -49,5 +49,28 @@ coll.updateOne(
   { $set: { Status: true } }
 );
 ```
+## 5. Updating by adding the createdtime and updatedtime
+
+Then here we will add the createdtime and updated time to it:
+
+```javascript
+db.task.find().forEach(doc => {
+  
+  if (doc.hasOwnProperty("Status")) {
+    let newStatus = !doc.Status; // Simulate a status change
+
+    db.task.updateOne(
+      { _id: doc._id },
+      {
+        $set: {
+          Status: newStatus,
+          updatedTime: new Date()
+        }
+      }
+    );
+  }
+});
+```
+
 ![image](https://github.com/user-attachments/assets/8b499d8d-400e-40b7-abbb-b9558ed51407)
 
