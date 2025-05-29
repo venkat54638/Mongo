@@ -38,7 +38,8 @@ Here I added IST to time. First I had just a number, after that I have added it 
 
 ## 4. Updating Document Status
 
-Then by object I set the status true or false command:
+Then by objectID I set the status true or false command.Here , I have set some of them as false and changed them true.
+
 
 ```javascript
 const collectionName = "task"; 
