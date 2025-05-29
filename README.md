@@ -72,6 +72,22 @@ db.task.find().forEach(doc => {
   }
 });
 ```
+## 6.Counting Documents in the Collection
+
+we can count the items in collections.
+```javascript
+db.task.countDocuments({});
+```
+## 7.showing the records which update one hour ago
+By these we can able to see updated things before one hour.
+we can count the items in collections.
+```javascript
+db.task.find({
+  updatedTime: { $gte: new Date(Date.now() - 1000 * 60 * 60) }
+}).pretty();
+```
+
+![image](https://github.com/user-attachments/assets/f191d7a9-56f7-4f60-bf8e-efb673231cd8)
 
 ![image](https://github.com/user-attachments/assets/8b499d8d-400e-40b7-abbb-b9558ed51407)
 
